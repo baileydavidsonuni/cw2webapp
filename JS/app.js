@@ -11,8 +11,8 @@ $(document).ready(async function() {
     const response = await fetch('/.auth/me');
     const payload = await response.json();
     console.log(payload);
-    const { userDetails } = payload;
-    return userDetails;
+    const { clientPrincipal } = payload;
+    return clientPrincipal.userDetails;
   }
   
 try {
