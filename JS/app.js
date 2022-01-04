@@ -10,6 +10,7 @@ $(document).ready(async function() {
   async function getUserInfo() {
     const response = await fetch('/.auth/me');
     const payload = await response.json();
+    console.log(payload);
     const { userDetails } = payload;
     return userDetails;
   }
