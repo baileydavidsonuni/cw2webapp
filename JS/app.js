@@ -5,9 +5,25 @@ RAP = "https://prod-27.eastus.logic.azure.com:443/workflows/06ac3d75465a424eba3a
 BLOB_ACCOUNT = "https://cw2blob.blob.core.windows.net";
 
 //Handlers for button clicks
-$(document).ready(function() {
+$(document).ready(async function() {
 
- 
+  async function getUserInfo() {
+    const response = await fetch('/.auth/me');
+    const payload = await response.json();
+    const { userDetails } = payload;
+    return userDetails;
+  }
+  
+try {
+
+  var user = await getUserInfo();
+  $('#user').text(user);
+  $('#login').hide();
+  } catch (err) {
+  console.log(err);
+  }
+  
+
   $("#retImages").click(function(){
 
       //Run the get asset list function
